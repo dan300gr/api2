@@ -1,0 +1,7 @@
+# Archivos de caché de Python
+__pycache__/
+**/__pycache__/
+
+# Ignorar caché en cualquier subcarpeta, como model o routers
+model/__pycache__/
+routers/__pycache__/
