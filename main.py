@@ -5,13 +5,19 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Agregar CORS
+# Configura los orígenes permitidos
+origins = [
+    "http://localhost:3000",  # Tu frontend local
+    "https://musicstorefinal.onrender.com",  # Dominio de producción (si es necesario)
+]
+
+# Agrega el middleware de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[""],  # Cambia "" por los dominios que necesites
+    allow_origins=origins,  # Permite estos orígenes
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Permite todos los métodos HTTP
+    allow_headers=["*"],  # Permite todas las cabeceras
 )
 
 # Lifespan para manejar el ciclo de vida de la app
