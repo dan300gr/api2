@@ -1,6 +1,18 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from db import database  # Asegúrate de que la importación esté correcta
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# Agregar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[""],  # Cambia "" por los dominios que necesites
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Lifespan para manejar el ciclo de vida de la app
 @asynccontextmanager
@@ -11,6 +23,8 @@ async def lifespan(app: FastAPI):
 
 # Instancia de la app con lifespan
 app = FastAPI(lifespan=lifespan)
+
+
 
 # Incluye los routers
 from routers.producto import router as producto_router
