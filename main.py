@@ -16,7 +16,7 @@ app = FastAPI(lifespan=lifespan)
 # Configuración del middleware de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000,https://front2-uojm.onrender.com"],  # Orígenes permitidos
+    allow_origins=["http://localhost:3000", "https://front2-uojm.onrender.com"],  # Orígenes permitidos
     allow_credentials=True,
     allow_methods=["*"],  # Métodos permitidos (GET, POST, PUT, etc.)
     allow_headers=["*"],  # Headers permitidos (Auth, Content-Type, etc.)
